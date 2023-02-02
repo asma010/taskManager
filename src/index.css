@@ -12,12 +12,13 @@ code {
 }
 
 .login-box{
+  text-align: center;
   margin: 100px auto;
   background-color: #ffffff;
   width:50%;
   border-radius:10px;
-  padding:20px;
-  box-shadow: 0px 0px 5px #cccccc;
+  padding:50px;
+  padding-bottom: 50px;
 }
 .login-title{
   font-weight:200;
@@ -54,6 +55,16 @@ code {
   font-size: 1.2em;
   background-color: #fff;
   color: #555;
+  border-radius: 5px;
+}
+.google-button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 40px;
+  box-shadow: 0 0 3px #aaa;
+  font-size: 1.2em;
+  background-color: #fff;
+  color: rgb(0, 0, 0);
   border-radius: 5px;
 }
 

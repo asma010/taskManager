@@ -1,40 +1,41 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import LoginContainer from "./components/LoginContainer";
 import TasksContainer from "./components/TasksContainer";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Profile from "./components/ProfileContainer";
-import { RecoilRoot } from "recoil";
 import PrivateRoute from "./PrivateRoute";
+import { AuthContextProvider } from "./context/AuthContext";
+import InitialRequest from "./InitialRequest";
+import { RecoilRoot } from "recoil";
 
 function App() {
-
-  useEffect(() => {
-    const loginCheck = localStorage.getItem("isLoggedIn");
-    if (loginCheck === "yes") {
-    }
-  }, []);
   return (
-    <RecoilRoot>
-      <Router>
-        <Routes>
-          <Route path="/login" element={<LoginContainer/>}/>
-          <Route path="/"
+    <Router>
+      <RecoilRoot>
+        <InitialRequest />
+        <AuthContextProvider>
+          <Routes>
+            <Route path="/login" element={<LoginContainer />} />
+            <Route
+              path="/"
               element={
                 <PrivateRoute>
-                  <TasksContainer/>
+                  <TasksContainer />
                 </PrivateRoute>
-                  }
-              />
-          <Route path="/profile" 
+              }
+            />
+            <Route
+              path="/profile"
               element={
                 <PrivateRoute>
-                  <Profile/>
+                  <Profile />
                 </PrivateRoute>
-                  }
-              />
-        </Routes>
-      </Router>
-    </RecoilRoot>
+              }
+            />
+          </Routes>
+        </AuthContextProvider>
+      </RecoilRoot>
+    </Router>
   );
 }
 

@@ -37,11 +37,7 @@ export default function EditDialog({ open, setOpen, setNewFieldValue,field }) {
           </DialogContentText>
           <TextField
           value={field.name}
-            onChange={(e) =>
-              setNewFieldValue((prevField) => {
-                return { ...prevField, name: e.target.value };
-              })
-            }
+           disabled 
           />
           <DialogContentText id="alert-dialog-description">
             Description
@@ -64,5 +60,3 @@ export default function EditDialog({ open, setOpen, setNewFieldValue,field }) {
     </div>
   );
 }
-//disabled={field.name}
-//<Textfield label='Name' setvalue={setField} name='name' validate={handleClickOpen}/>

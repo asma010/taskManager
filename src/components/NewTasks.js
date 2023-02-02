@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import { db } from "../firebase";
 import { collection, addDoc } from "firebase/firestore";
 import { Button, Paper, TextField } from "@mui/material";
-import { loggedInAtom } from "../recoil/atoms";
-import { useSetRecoilState } from "recoil";
+import { UserAuth } from "../context/AuthContext";
 
 const NewTasks = () => {
-  //const setLoggedIn=useSetRecoilState(loggedInAtom);
-  //setLoggedIn(false);
+  const { user } = UserAuth();
+  //console.log("hello mrs",user?.reloadUserInfo?.localId );
   const [field, setField] = useState({
     userName: "",
     taskName: "",
@@ -45,9 +44,9 @@ const NewTasks = () => {
     setField({ ...field, [name]: e.target.value });
     validateNotEmpty(e.target.value, name);
   };
-
   const handleSave = () => {
     const newTaskForm = {
+      userId: user?.reloadUserInfo?.localId,
       userName: field.userName,
       taskName: field.taskName,
       taskDescription: field.taskDescription,
@@ -60,14 +59,14 @@ const NewTasks = () => {
   };
   return (
     <div className="new-task-box">
-      <Paper sx={{ width: "95%", margin: "auto auto", padding: "20px" }}>
+      <Paper sx={{ width: "95%", margin: "auto auto", padding: "5px"}}>
         <h2>create new Task</h2>
 
         <div className="flex-container">
           <div className="flex-item">
             <div className="input-label">userName</div>
             <TextField
-              error={!fieldIsValid.userName}
+              error={!fieldIsValid.userName} 
               fullWidth
               onChange={(e) => changeHandler(e, "userName")}
             />

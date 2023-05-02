@@ -4,15 +4,15 @@ Task Manager is a web application that allows you to manage your tasks in a simp
 
 ## Getting Started
 
-To use the Task Manager, you need to login. Once you have logged in, you can start adding tasks. Simply click on the "New Task" button to create a new task. You can enter a task description, set a due date, and add any notes or comments.
+To use the Task Manager, you need to login. Once you have logged in, you can start adding tasks. Simply click on the "Submit New Task" button to create a new task. You can enter a task description, set a due date, and set its priority.
 
 Once you've completed a task, you can mark it as complete by checking the box next to the task description.
 ## Features
 
 Task Manager has the following features:
 
-- User authentication: You need to create login to access the Task Manager.
-- Task creation: You can create new tasks, set due dates, and add notes/comments.
+- User authentication: You need to login to access the Task Manager.
+- Task creation: You can create new tasks, set due dates.
 - Task completion: You can mark tasks as complete.
 
 ## Technologies Used

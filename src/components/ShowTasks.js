@@ -1,32 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { addDoc, collection, getDocs } from "firebase/firestore";
 import Task from "./Task";
+import LoadingPage from "./Loading ";
 
-const ShowTasks = () => {
-  const [tasks, setTasks] = useState([]);
-  const userId = localStorage.getItem("userId");
-  useEffect(() => {
-    let isMounted = true;
-    const getAllTasks = async () => {
-      const collectionRef = collection(db, "asma-tasks");
-      const snapshot = await getDocs(collectionRef);
-      if (isMounted) {
-        const tempArray = [];
-        snapshot.forEach((task) => {
-          if (task.data().userId === userId) {
-            tempArray.push({ ...task.data(), id: task.id });
-          }
-        });
-        //console.log(tempArray);
-        setTasks(tempArray);
-      }
-    };
-    getAllTasks();
-    return (()=>{
-      isMounted=false;
-    })
-  }, []);
+const ShowTasks = ({tasks, isLoading}) => {
+  if (isLoading) {
+    return <LoadingPage isTaskLoading={true} />
+  }
   return (
     <div>
       {tasks.map((task) => (

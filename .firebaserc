@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "taskmanager-db"
-  }
+    "default": "taskmanager-db",
+    "manageyourtasks": "taskmanager-db"
+  },
+  "targets": {},
+  "etags": {}
 }

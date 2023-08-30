@@ -7,20 +7,15 @@ import {
   DialogContentText,
   DialogContent,
 } from "@mui/material";
-import { useState } from "react";
-//import Textfield from './Textfield';
+import { doc, updateDoc } from "firebase/firestore";
+import { db } from "../firebase";
 
-export default function EditDialog({ open, setOpen, setNewFieldValue,field }) {
-  //const [field,setField]=useState({name:'',description:''});
-  
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
+export default function EditDialog({ open, setOpen, setNewFieldValue, field }) {
+  const handleClose = async () => {
+    const docRef = doc(db, 'userInfo', localStorage.getItem('userId'));
+    await updateDoc(docRef, field); //{ name: data.name, description: data.description, imgUrl: data.imgUrl });
     setOpen(false);
   };
-
 
   return (
     <div>
@@ -36,23 +31,29 @@ export default function EditDialog({ open, setOpen, setNewFieldValue,field }) {
             Name
           </DialogContentText>
           <TextField
-          value={field.name}
-           disabled 
+            value={field.name}
+            onChange={(e) =>
+              setNewFieldValue((prevField) => ({
+                ...prevField,
+                name: e.target.value,
+              }))
+            }
           />
           <DialogContentText id="alert-dialog-description">
             Description
           </DialogContentText>
           <TextField
-          value={field.description}
+            value={field.description}
             onChange={(e) =>
-              setNewFieldValue((prevField) => {
-                return { ...prevField, description: e.target.value };
-              })
+              setNewFieldValue((prevField) => ({
+                ...prevField,
+                description: e.target.value,
+              }))
             }
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} autoFocus >
+          <Button onClick={handleClose} autoFocus>
             CLOSE
           </Button>
         </DialogActions>

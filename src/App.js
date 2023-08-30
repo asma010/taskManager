@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import LoginContainer from "./components/LoginContainer";
 import TasksContainer from "./components/TasksContainer";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -7,12 +7,23 @@ import PrivateRoute from "./PrivateRoute";
 import { AuthContextProvider } from "./context/AuthContext";
 import InitialRequest from "./InitialRequest";
 import { RecoilRoot } from "recoil";
+import Loading from "./components/Loading ";
 
 function App() {
+  const [isInitialized, setIsInitialized] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsInitialized(true); 
+    }, 1000);
+  }, []);
+
   return (
     <Router>
       <RecoilRoot>
-        <InitialRequest />
+        {isInitialized ? (
+          <>
+            <InitialRequest />
         <AuthContextProvider>
           <Routes>
             <Route path="/login" element={<LoginContainer />} />
@@ -34,6 +45,9 @@ function App() {
             />
           </Routes>
         </AuthContextProvider>
+        </>):(
+          <Loading isTaskLoading={false} />
+        )}
       </RecoilRoot>
     </Router>
   );

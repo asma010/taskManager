@@ -1,5 +1,6 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
+import { UserAuth } from "../src/context/AuthContext";
 
 const PrivateRoute = ({ children }) => {
   const loginCheck = localStorage.getItem("isLoggedIn");

@@ -6,7 +6,6 @@ import { UserAuth } from "../context/AuthContext";
 
 const NewTasks = () => {
   const { user } = UserAuth();
-  //console.log("hello mrs",user?.reloadUserInfo?.localId );
   const [field, setField] = useState({
     userName: "",
     taskName: "",
@@ -128,8 +127,3 @@ const NewTasks = () => {
   );
 };
 export default NewTasks;
-//className={`input-field ${!fieldIsValid.userName ? "": "error"}`}
-/*(e)=>{
-            setField({...field,userName:e.target.value})
-            validateNotEmpty(e.target.value,'userName')
-          }*/

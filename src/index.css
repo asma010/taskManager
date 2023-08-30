@@ -6,6 +6,11 @@ body {
   background-color: #f6f6f6;
 }
 
+.scrollable-container {
+  height: 100vh; /* Set the desired height */
+  overflow: auto; /* Add a vertical scroll bar if content overflows */
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

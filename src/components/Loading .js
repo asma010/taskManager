@@ -1,5 +1,5 @@
 import React from "react";
-import "./Loading.css"; // Import your custom CSS for styling the loader
+import "./Loading.css"; 
 
 const LoadingPage = ({isTaskLoading}) => {
   // const isTaskLoading = false;

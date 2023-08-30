@@ -4,7 +4,6 @@ import {
   signInWithPopup,
   signOut,
   onAuthStateChanged,
-  //signInWithRedirect,
 } from "firebase/auth";
 import { auth } from "../firebase";
 import { useEffect } from "react";
@@ -21,7 +20,6 @@ export const AuthContextProvider = ({ children }) => {
     .then((result) => {
       localStorage.setItem("userId", result.user.uid);
       localStorage.setItem("isLoggedIn", "yes");
-      //navigate("./");
     })
     .catch((error) => {
       console.log(error);

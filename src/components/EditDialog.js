@@ -13,7 +13,7 @@ import { db } from "../firebase";
 export default function EditDialog({ open, setOpen, setNewFieldValue, field }) {
   const handleClose = async () => {
     const docRef = doc(db, 'userInfo', localStorage.getItem('userId'));
-    await updateDoc(docRef, field); //{ name: data.name, description: data.description, imgUrl: data.imgUrl });
+    await updateDoc(docRef, field);
     setOpen(false);
   };
 

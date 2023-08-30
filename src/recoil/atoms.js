@@ -6,21 +6,6 @@ export const loggedInAtom = atom({
 export const dataAtom = atom({
     key:'data', default:null
 })
-// export const userInfoAtom = atom({
-//     key:'userInfo', default:null
-// })
 export const imgUrlAtom = atom({
     key:'imgUrl', default:null
 })
-/*export const userNameAtom = atom({
-    key:'name',
-    default:'user'
-})
-export const emailAtom = atom({
-    key:'email',
-    default:null
-})
-export const imgAtom = atom({
-    key:'img',
-    default:null
-})*/

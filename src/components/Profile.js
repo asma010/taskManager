@@ -16,14 +16,13 @@ const Profile = () => {
   useEffect(() => {
     const fetchData = async () => {
       const currentUser = auth.currentUser;
-      const docRef = doc(db, 'userInfo', currentUser.uid);//localStorage.getItem("userId")
+      const docRef = doc(db, 'userInfo', currentUser.uid);
       const snapshot = await getDoc(docRef);
       const fetchedData = snapshot.data();
       const updatedData = {
         ...fetchedData,
         imgUrl: currentUser?.photoURL
       };
-      // console.log(updatedData)
       setData(updatedData);
       setIsLoading(false);
     }

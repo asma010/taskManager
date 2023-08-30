@@ -10,7 +10,6 @@ const LoginContainer = () => {
   const handleGoogleSignIn = async () => {
     try {
       await googleSignIn();
-      // navigate("/");
     } catch (error) {
       console.log(error);
     }
